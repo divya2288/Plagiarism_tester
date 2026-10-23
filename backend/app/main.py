@@ -5,7 +5,6 @@ from pathlib import Path
 from difflib import SequenceMatcher
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
-from sentence_transformers import SentenceTransformer
 
 import fitz
 from docx import Document as DocxDocument
