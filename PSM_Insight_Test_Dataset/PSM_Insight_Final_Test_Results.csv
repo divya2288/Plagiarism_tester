@@ -1,0 +1,6 @@
+﻿Test Case,Expected Result,Actual Similarity Score,Matched Words,Passages,Result
+Exact Copy,Exact match detected,100.0%,11,1,PASS
+Modified Wording,Modified wording detected as a match,99.0%,14,1,PASS
+Unrelated Text,Low or zero similarity,0.0%,0,0,PASS
+Original Text,Low or zero similarity,0.0%,0,0,PASS
+Paraphrased Text,Semantic similarity detected,80.9%,12,1,PASS

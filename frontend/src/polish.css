@@ -1,0 +1,230 @@
+/* ==========================================================
+   PSM Insight – UI polish layer
+   Import AFTER style.css so these rules win.
+   ========================================================== */
+
+:root {
+  --ink: #16213a;
+  --muted: #6b7890;          /* darker than before: passes contrast on white */
+  --line: #e3e8f2;
+  --radius-lg: 16px;
+  --radius-md: 11px;
+  --radius-sm: 8px;
+  --ok: #2f9e78;
+  --warn: #c98a12;
+  --bad: #d4455f;
+}
+
+body { font-size: 14px; -webkit-font-smoothing: antialiased; }
+
+/* ---------- 1. Readability: type was 9–11px almost everywhere ---------- */
+.panel-heading p            { font-size: 13px; line-height: 1.6; color: var(--muted); }
+.panel-heading h2           { font-size: 20px; }
+.stack label:not(.upload-zone) { font-size: 13px; font-weight: 700; }
+.step-pill, .count-pill     { font-size: 11px; padding: 6px 10px; }
+.muted                      { font-size: 13px; }
+.nav-item                   { font-size: 14px; padding: 12px 14px; }
+.nav-label, .eyebrow        { font-size: 11px; }
+.top-status                 { font-size: 12px; }
+.top-new-scan               { font-size: 13px; padding: 11px 16px; }
+.primary, .secondary        { font-size: 13px; padding: 12px 18px; }
+.upload-zone strong         { font-size: 14px; }
+.upload-zone small          { font-size: 12px; }
+.separator                  { font-size: 11px; }
+.method-note strong         { font-size: 13px; }
+.method-note p              { font-size: 12px; line-height: 1.7; }
+.score-card > span,
+.mini-stat > span           { font-size: 12px; }
+.legend                     { font-size: 12px; gap: 16px; }
+.section-title              { font-size: 14px; }
+.section-title span         { font-size: 12px; }
+.highlighted-text           { font-size: 14px; line-height: 1.85; padding: 18px; }
+.category-tag               { font-size: 11px; padding: 5px 9px; }
+.match-percent              { font-size: 12px; }
+.match-excerpt              { font-size: 14px; line-height: 1.65; }
+.source-line                { font-size: 12px; }
+.source-line strong         { font-size: 12px; }
+.source-excerpt             { font-size: 13px; line-height: 1.65; }
+.disclaimer                 { font-size: 12px; }
+.no-matches, .empty-state   { font-size: 13px; }
+table                       { font-size: 13px; }
+th                          { font-size: 11px; }
+td strong                   { font-size: 13px; }
+td small                    { font-size: 11px; }
+.table-action               { font-size: 12px; }
+.reference-meta strong      { font-size: 13px; }
+.reference-meta small       { font-size: 12px; }
+.alert                      { font-size: 13px; }
+footer                      { font-size: 12px; }
+
+/* Dashboard */
+.welcome-copy p             { font-size: 14px; }
+.welcome-kicker             { font-size: 11px; }
+.welcome-cta                { font-size: 13px; padding: 13px 18px; }
+.dashboard-section-head h2  { font-size: 19px; }
+.dashboard-section-head p   { font-size: 13px; }
+.live-label                 { font-size: 10px; }
+.stat-top                   { font-size: 13px; }
+.dashboard-stat > small     { font-size: 12px; }
+.stat-bottom                { font-size: 11px; }
+.dashboard-stat > strong    { font-size: 32px; }
+.recent-file-info strong    { font-size: 13px; }
+.recent-file-info small     { font-size: 12px; }
+.recent-score strong        { font-size: 15px; }
+.recent-score small         { font-size: 11px; }
+.recent-open                { font-size: 12px; padding: 8px 12px; }
+.text-action                { font-size: 12px; }
+.quick-action strong        { font-size: 13px; }
+.quick-action small         { font-size: 12px; }
+.quick-note p               { font-size: 12px; }
+.dashboard-empty strong     { font-size: 16px; }
+.dashboard-empty p          { font-size: 13px; }
+.sidebar-promo strong       { font-size: 13px; }
+.sidebar-promo p            { font-size: 12px; }
+.sidebar-promo button       { font-size: 12px; padding: 10px 12px; }
+.user-info strong           { font-size: 12px; }
+.user-info small            { font-size: 11px; }
+.brand-row small            { font-size: 12px; }
+
+/* ---------- 2. BUG FIX: inputs/placeholder were bold (inherited 800) ---------- */
+.stack input:not([type=file]),
+.stack textarea {
+  font-weight: 400;
+  font-size: 14px;
+  padding: 13px 14px;
+  border-radius: var(--radius-md);
+}
+.stack input::placeholder,
+.stack textarea::placeholder { color: #9aa6ba; font-weight: 400; }
+.stack textarea { min-height: 190px; }
+
+/* ---------- 3. Replace text "Upload" / "Search" with real icons ---------- */
+.upload-icon,
+.empty-icon,
+.dashboard-empty-icon {
+  font-size: 0;
+  color: transparent;
+  position: relative;
+}
+.upload-icon::before,
+.empty-icon::before,
+.dashboard-empty-icon::before {
+  content: '';
+  width: 22px; height: 22px;
+  background-repeat: no-repeat; background-position: center; background-size: contain;
+}
+.upload-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236552e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2'/%3E%3C/svg%3E");
+}
+.empty-icon::before,
+.dashboard-empty-icon::before {
+  width: 30px; height: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237867f5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Ccircle cx='11' cy='14' r='2.5'/%3E%3Cpath d='M13 16l2 2'/%3E%3C/svg%3E");
+}
+.upload-icon       { width: 44px; height: 44px; border-radius: 13px; }
+.empty-icon        { width: 72px; height: 72px; border-radius: 22px; }
+.dashboard-empty-icon { width: 56px; height: 56px; border-radius: 16px; }
+
+/* ---------- 4. Upload zone: clearer drop target ---------- */
+.upload-zone {
+  min-height: 150px;
+  border: 1.5px dashed #a9b3f0;
+  border-radius: var(--radius-lg);
+}
+.upload-zone:hover { border-color: var(--violet); background: #f4f3ff; box-shadow: 0 0 0 4px rgba(120,103,245,.08); }
+
+/* ---------- 5. Result panel ---------- */
+.result-panel { padding: 24px; }
+.result-panel .panel-heading h2 { font-size: 22px; margin-bottom: 4px; }
+
+.score-grid { gap: 12px; }
+.score-card, .mini-stat { padding: 16px 14px; border-radius: var(--radius-md); }
+.score-card > strong { font-size: 34px; }
+.mini-stat strong    { font-size: 26px; }
+.meter { height: 7px; }
+
+/* Severity colouring – needs the data-level attribute (see JSX note) */
+.score-card[data-level="low"]  .meter span { background: linear-gradient(90deg, #3fbf94, #7be0bb); }
+.score-card[data-level="mid"]  .meter span { background: linear-gradient(90deg, #e9a923, #f6cd6b); }
+.score-card[data-level="high"] .meter span { background: linear-gradient(90deg, #d4455f, #f08a9d); }
+.score-card[data-level="low"]  > strong { color: var(--ok); }
+.score-card[data-level="mid"]  > strong { color: var(--warn); }
+.score-card[data-level="high"] > strong { color: var(--bad); }
+.level-badge {
+  display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 999px;
+  font-size: 11px; font-weight: 700;
+}
+.score-card[data-level="low"]  .level-badge { background: #e4f8ef; color: #23785a; }
+.score-card[data-level="mid"]  .level-badge { background: #fff2d2; color: #8a6210; }
+.score-card[data-level="high"] .level-badge { background: #ffe5e9; color: #a4344b; }
+
+/* Highlights: stronger so matches stand out in a block of text */
+mark { padding: 2px 3px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+mark.exact           { background: #ffd9e0; box-shadow: inset 0 -2px #f29aab; }
+mark.near-duplicate  { background: #ffeeba; box-shadow: inset 0 -2px #f0be4d; }
+mark.semantic        { background: #d9e7ff; box-shadow: inset 0 -2px #83aefa; }
+
+.highlighted-text { max-height: 320px; background: #fff; }
+
+/* Match cards: accent bar shows category at a glance, active state is obvious */
+.match-card { position: relative; padding: 16px 16px 16px 19px; border-radius: var(--radius-md); overflow: hidden; }
+.match-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #d5d9e6; }
+.match-card:has(.category-tag.exact)::before           { background: #f29aab; }
+.match-card:has(.category-tag.near-duplicate)::before  { background: #f0be4d; }
+.match-card:has(.category-tag.semantic)::before        { background: #83aefa; }
+.match-card.active { border-color: #9d92ff; box-shadow: 0 0 0 3px rgba(120,103,245,.12); background: #fff; }
+.match-card:hover  { transform: none; }
+.source-excerpt    { background: #f8f9fd; padding: 9px 11px; border-radius: 0 8px 8px 0; }
+
+/* ---------- 6. Layout: keep results visible while scrolling ---------- */
+@media (min-width: 1101px) {
+  .scan-panel { position: sticky; top: 16px; }
+}
+
+/* ---------- 7. Sidebar / topbar refinements ---------- */
+.nav-item.selected { background: linear-gradient(110deg, rgba(120,103,245,.30), rgba(85,214,208,.08)); }
+.nav-symbol { font-size: 18px; width: 20px; }
+.topbar { padding: 26px 0 22px; }
+.topbar h1 { font-size: 28px; }
+.panel { border-radius: var(--radius-lg); padding: 26px; }
+
+/* ---------- 8. Tables: row hover + sticky header feel ---------- */
+tbody tr { transition: background .15s ease; }
+tbody tr:hover { background: #f9f9ff; }
+th { padding: 12px 14px; }
+td { padding: 15px 14px; }
+.score-chip { font-size: 12px; padding: 5px 9px; border-radius: 999px; }
+.table-action { padding: 6px 10px; border-radius: 7px; }
+.table-action:hover { background: #f0efff; }
+.table-action.danger-text:hover { background: #fff0f2; }
+
+/* ---------- 9. Small touches ---------- */
+::selection { background: rgba(120,103,245,.22); }
+.highlighted-text::-webkit-scrollbar { width: 8px; }
+.highlighted-text::-webkit-scrollbar-thumb { background: #d6dbe8; border-radius: 8px; }
+.alert { border-radius: var(--radius-md); padding: 13px 16px; }
+.alert button { color: inherit; opacity: .6; }
+.alert button:hover { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 700px) {
+  .topbar h1 { font-size: 22px; }
+  .dashboard-stat > strong { font-size: 26px; }
+  .stack textarea { min-height: 150px; }
+}
+mark.selected-match {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.match-card.active .source-excerpt {
+  background: #e8f0ff;
+  border-left: 3px solid #2563eb;
+  padding: 10px 12px;
+  border-radius: 4px;
+  color: #1e3a8a;
+  font-weight: 500;
+}

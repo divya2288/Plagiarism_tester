@@ -1,0 +1,102 @@
+/* ==========================================================
+   PSM Insight – icons + dashboard refinements
+   Import AFTER style.css and polish.css
+   ========================================================== */
+
+:root {
+  --i-home:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M10 20v-6h4v6'/%3E%3C/svg%3E");
+  --i-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E");
+  --i-clock:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+  --i-books:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h4v16H4z'/%3E%3Cpath d='M10 4h4v16h-4z'/%3E%3Cpath d='M16.5 5.5l3.5 1-3 13.5-3.5-1z'/%3E%3C/svg%3E");
+  --i-logout: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4'/%3E%3Cpath d='M16 17l5-5-5-5'/%3E%3Cpath d='M21 12H9'/%3E%3C/svg%3E");
+  --i-percent:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 5L5 19'/%3E%3Ccircle cx='7' cy='7' r='2.2'/%3E%3Ccircle cx='17' cy='17' r='2.2'/%3E%3C/svg%3E");
+  --i-flag:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 21V4'/%3E%3Cpath d='M5 4h12l-2 4 2 4H5'/%3E%3C/svg%3E");
+  --i-file:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9 13h6M9 17h6'/%3E%3C/svg%3E");
+  --i-filesearch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Ccircle cx='11' cy='14' r='2.5'/%3E%3Cpath d='M13 16l2 2'/%3E%3C/svg%3E");
+  --i-arrow:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M13 6l6 6-6 6'/%3E%3C/svg%3E");
+}
+
+/* Shared: turn a text-glyph element into a coloured icon (uses currentColor) */
+.nav-symbol, .stat-icon, .quick-action-icon, .recent-file-icon, .file-icon { font-size: 0; }
+.nav-symbol::before, .stat-icon::before, .quick-action-icon::before,
+.recent-file-icon::before, .file-icon::before {
+  content: ''; display: block; background: currentColor;
+  -webkit-mask: var(--ico) center / contain no-repeat;
+          mask: var(--ico) center / contain no-repeat;
+}
+
+/* ---------- Sidebar ---------- */
+.nav-symbol { width: 20px; height: 20px; }
+.nav-symbol::before { width: 19px; height: 19px; }
+.sidebar > .nav-item:nth-of-type(1) .nav-symbol { --ico: var(--i-home); }
+.sidebar > .nav-item:nth-of-type(2) .nav-symbol { --ico: var(--i-search); }
+.sidebar > .nav-item:nth-of-type(3) .nav-symbol { --ico: var(--i-clock); }
+.sidebar > .nav-item:nth-of-type(4) .nav-symbol { --ico: var(--i-books); }
+.sidebar-bottom .nav-symbol { --ico: var(--i-logout); }
+.nav-item.selected .nav-symbol { color: #d9f76a; }
+
+/* ---------- Dashboard stat cards ---------- */
+.stat-icon { width: 38px; height: 38px; border-radius: 12px; }
+.stat-icon::before { width: 19px; height: 19px; }
+.stat-icon.purple { --ico: var(--i-filesearch); }
+.stat-icon.cyan   { --ico: var(--i-percent); }
+.stat-icon.amber  { --ico: var(--i-flag); }
+.stat-icon.green  { --ico: var(--i-books); }
+
+.dashboard-stat { padding: 20px; border-radius: 16px; transition: border-color .18s ease, box-shadow .18s ease; }
+.dashboard-stat:hover { border-color: #d3d8ec; box-shadow: 0 10px 28px rgba(29,42,72,.07); }
+.stat-mini-bar { width: 28px; height: 5px; }
+
+/* ---------- Quick actions & recent scans ---------- */
+.quick-action-icon { width: 40px; height: 40px; border-radius: 12px; }
+.quick-action-icon::before { width: 19px; height: 19px; }
+.quick-action-icon.violet { --ico: var(--i-filesearch); }
+.quick-action-icon.teal   { --ico: var(--i-books); }
+.quick-action-icon.gold   { --ico: var(--i-clock); }
+.quick-action { padding: 14px 8px; margin: 0 -8px; width: calc(100% + 16px); border-radius: 10px; transition: background .15s ease; }
+.quick-action:hover { background: #f8f8ff; }
+
+.recent-file-icon, .file-icon { --ico: var(--i-file); }
+.recent-file-icon::before, .file-icon::before { width: 18px; height: 18px; }
+.recent-row { padding: 15px 0; }
+
+/* ---------- "->" text arrows → icon arrows ---------- */
+.welcome-cta span, .recent-open span, .text-action span,
+.sidebar-promo button span, .quick-action > b {
+  font-size: 0; display: inline-block; width: 15px; height: 15px; margin-left: 4px;
+}
+.welcome-cta span::before, .recent-open span::before, .text-action span::before,
+.sidebar-promo button span::before, .quick-action > b::before {
+  content: ''; display: block; width: 100%; height: 100%; background: currentColor;
+  -webkit-mask: var(--i-arrow) center / contain no-repeat;
+          mask: var(--i-arrow) center / contain no-repeat;
+}
+.quick-action > b { color: #9a91e8; margin-left: 0; }
+.quick-action:hover > b { color: #6555d1; transform: translateX(2px); transition: transform .15s ease; }
+
+/* ---------- Welcome banner: better balance ---------- */
+.welcome-banner { min-height: 215px; padding: 32px 40px; }
+.welcome-copy { max-width: 600px; }
+.welcome-copy h2 { max-width: 600px; font-size: clamp(26px, 2.6vw, 34px); }
+.welcome-copy p  { max-width: 520px; font-size: 14px; }
+.welcome-cta { padding: 13px 18px; gap: 12px; }
+
+/* Wide screens: make the art feel anchored rather than floating */
+@media (min-width: 1250px) {
+  .welcome-art { right: 70px; }
+}
+
+/* Sidebar promo card: quieter */
+.sidebar-promo { margin-top: 24px; }
+
+/* ---------- Report-only view (opened from Scan history) ---------- */
+.content-grid.report-only { grid-template-columns: 1fr; }
+.content-grid.report-only .scan-panel { display: none; }
+
+.heading-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.ghost {
+  border: 1px solid #dcdff0; background: #fff; color: #4b5870;
+  border-radius: 10px; padding: 12px 16px; font-size: 13px; font-weight: 700;
+  transition: background .15s ease;
+}
+.ghost:hover { background: #f6f6fd; }
